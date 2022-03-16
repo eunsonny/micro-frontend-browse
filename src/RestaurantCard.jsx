@@ -1,12 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import PropTypes from 'prop-types';
+import React from "react";
+import styled from "styled-components";
+import PropTypes from "prop-types";
 
-const StyledLink = styled(Link)`
-  color: inherit;
-  text-decoration: none;
-`;
 
 const Card = styled.div`
   display: inline-block;
@@ -39,18 +34,19 @@ const Description = styled.p`
   font-size: 20px;
 `;
 
-const RestaurantCard = ({ restaurant }) => (
-  <Card>
-    <StyledLink to={`/restaurant/${restaurant.id}`}>
+const RestaurantCard = ({ restaurant, navigate }) => {
+
+  return (
+    <Card onClick={() => navigate(`/restaurant/${restaurant.id}`)}>
       <CardTitleRow>
         <CardTitle>{restaurant.name}</CardTitle>
         <PriceRange>{restaurant.priceRange}</PriceRange>
       </CardTitleRow>
       <Img src={restaurant.imageSrc} alt={restaurant.imageDescription} />
       <Description>{restaurant.description}</Description>
-    </StyledLink>
-  </Card>
-);
+    </Card>
+  );
+};
 
 RestaurantCard.propTypes = {
   restaurant: PropTypes.shape({

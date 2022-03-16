@@ -4,14 +4,14 @@ import App from './App';
 import { unregister } from './registerServiceWorker';
 
 
-window.renderBrowse = (containerId, history) => {
+window.renderBrowse = (containerId, navigate) => {
   ReactDOM.render(
-    <App history={history} />,
+    <App navigate={navigate} />,
     document.getElementById(containerId),
   );
   unregister();
 }
 
-window.unmountBrowse = containerId => {
+window.unmountBrowse = (containerId) => {
   ReactDOM.unmountComponentAtNode(document.getElementById(containerId));
 }

@@ -8,7 +8,7 @@ const CardContainer = styled.div`
   justify-content: space-around;
 `;
 
-const RestaurantList = ({ restaurants, priceRangeFilter, nameFilter }) => {
+const RestaurantList = ({ restaurants, priceRangeFilter, nameFilter, navigate }) => {
   const anyPriceSelected = Object.values(priceRangeFilter).some(f => f);
 
   const restaurantsInPriceRange = anyPriceSelected
@@ -24,7 +24,7 @@ const RestaurantList = ({ restaurants, priceRangeFilter, nameFilter }) => {
   return (
     <CardContainer>
       {filteredRestaurants.map(restaurant => (
-        <RestaurantCard key={restaurant.id} restaurant={restaurant} />
+        <RestaurantCard key={restaurant.id} restaurant={restaurant} navigate={navigate} />
       ))}
     </CardContainer>
   );

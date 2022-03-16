@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import { createBrowserHistory } from 'history';
 import styled from "styled-components";
 import Loading from './Loading';
 import Filters from './Filters';
@@ -16,8 +14,7 @@ const defaultFilters = {
   }
 }
 
-function App(props) {
-  const defaultHistory = createBrowserHistory();
+function App({ navigate }) {
   const [restaurants, setRestaurants] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -71,7 +68,6 @@ function App(props) {
     }
 
     return (
-      <BrowserRouter history={props.history || defaultHistory}>
         <MainColumn>
           <Filters
             name={filters.nameFilter}
@@ -84,9 +80,9 @@ function App(props) {
             restaurants={restaurants}
             priceRangeFilter={filters.priceRangeFilter}
             nameFilter={filters.nameFilter}
+            navigate={navigate}
           />
         </MainColumn>
-      </BrowserRouter>
     );
 }
 
